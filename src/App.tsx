@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { Input } from './components/Input';
+import { Keyboard } from './components/Keyboard';
+import { Layout } from './components/Layout';
+import { Phone } from './components/Phone';
+import { Prediction } from './components/Prediction';
 
 function App() {
+  const [enteredDigits, setEnteredDigits] = useState('');
+  const [parsedLetters, setParsedLetters] = useState('');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Layout>
+        <Phone>
+          <Input parsedLetters={parsedLetters} />
+          <Prediction
+            enteredDigits={enteredDigits}
+            setParsedLetters={setParsedLetters}
+            parsedLetters={parsedLetters}
+            setEnteredDigits={setEnteredDigits}
+          />
+          <Keyboard setEnteredDigits={setEnteredDigits} enteredDigits={enteredDigits} />
+        </Phone>
+      </Layout>
     </div>
   );
 }
