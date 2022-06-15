@@ -10,7 +10,7 @@ export function Input(props: Props) {
       </label>
       <div
         placeholder="Type here"
-        className="input input-bordered w-full max-w-xs flex items-center"
+        className="input input-bordered w-full overflow-y-auto max-w-xs flex items-center"
       >
         {props.parsedLetters &&
           props.parsedLetters[1].toUpperCase() + props.parsedLetters.slice(2)}
